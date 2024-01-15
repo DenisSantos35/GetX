@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/first_screen.dart';
+import 'package:getx/home_screen.dart';
 import 'package:getx/pages/HomePage.dart';
+import 'package:getx/second_screen.dart';
 
 
 void main() {
@@ -14,12 +17,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
+      getPages: [
+        GetPage(name: "/", page: ()=> HomeScreen(), transition: Transition.leftToRight),
+        GetPage(name: "/firstPage", page: ()=> FirstScreen(), transition: Transition.zoom),
+        GetPage(name: "/secondPage", page: ()=> SecondScreen(), transition: Transition.native),
+      ],
       title: 'Estudo getX',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.lightBlue
+        ),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      initialRoute: "/",
+      home: const HomeScreen(),
     );
   }
 }
