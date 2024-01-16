@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/first_screen.dart';
-import 'package:getx/home_screen.dart';
-import 'package:getx/pages/HomePage.dart';
-import 'package:getx/second_screen.dart';
+import 'package:getx/view/screens/first_screen.dart';
+import 'package:getx/view/screens/home_screen.dart';
 
 
 void main() {
@@ -17,11 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
+      initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: ()=> HomeScreen(), transition: Transition.leftToRight),
-        GetPage(name: "/firstPage", page: ()=> FirstScreen(), transition: Transition.zoom),
-        GetPage(name: "/secondPage", page: ()=> SecondScreen(), transition: Transition.native),
+        //GetPage(name: "/firstscreen", page: ()=> FirstScreen(), transition: Transition.circularReveal, transitionDuration: Durations.short4);
+
       ],
       title: 'Estudo getX',
       theme: ThemeData(
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      initialRoute: "/",
+
       home: const HomeScreen(),
     );
   }
