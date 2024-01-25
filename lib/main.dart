@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/home_binding.dart';
 import 'package:getx/view/screens/first_screen.dart';
 import 'package:getx/view/screens/home_screen.dart';
 
 
 void main() {
+  HomeBinding().dependencies();
   runApp(const MyApp());
 }
 
@@ -15,13 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: "/",
-      getPages: [
-        GetPage(name: "/", page: ()=> HomeScreen(), transition: Transition.leftToRight),
-        //GetPage(name: "/firstscreen", page: ()=> FirstScreen(), transition: Transition.circularReveal, transitionDuration: Durations.short4);
-
-      ],
+      //initialRoute: "/",
+      // getPages: [
+      //   GetPage(name: "/", page: ()=> HomeScreen(), transition: Transition.leftToRight),
+      //   //GetPage(name: "/firstscreen", page: ()=> FirstScreen(), transition: Transition.circularReveal, transitionDuration: Durations.short4);
+      // ],
       title: 'Estudo getX',
+      initialBinding: HomeBinding(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         appBarTheme: const AppBarTheme(
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
