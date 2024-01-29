@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController{
   String name = "";
@@ -8,6 +9,8 @@ class HomeController extends GetxController{
   bool teste = false;
 
 
+  GetStorage box = GetStorage();
+
   void increaseIndex(){
     index.value++;
     //update();
@@ -15,10 +18,25 @@ class HomeController extends GetxController{
   }
 
   void displayName(){
-    teste = !teste;
-    teste? name = "John": name = "";
+
+    name = "John";
+    /// here to save the data
+    box.write('name', name);
     update();
   }
+
+  void getTheSaveName(){
+    String name = box.read("name")??"deleted";
+    print(name);
+    update();
+  }
+
+  void deleteSaveName(){
+    box.remove("name");
+    print("It's removed");
+    update();
+  }
+
 
   @override
   void onInit() {

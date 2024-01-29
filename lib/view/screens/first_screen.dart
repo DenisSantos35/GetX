@@ -63,8 +63,9 @@ class _FirstScreenState extends State<FirstScreen> {
           //     }),
 
           GetBuilder<HomeController>(
+            init: HomeController(),
               builder: (controller) => Text(
-                    controller.name,
+                    controller.box.read('name')??"",
                     style: Theme.of(context).textTheme.headlineLarge,
                     textAlign: TextAlign.center,
                   )),
@@ -80,6 +81,34 @@ class _FirstScreenState extends State<FirstScreen> {
                 controller.displayName();
               },
               child: const Text("Display Name"),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: MaterialButton(
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Colors.red,
+              onPressed: () {
+                controller.getTheSaveName();
+              },
+              child: const Text("get Name"),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: MaterialButton(
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              color: Colors.red,
+              onPressed: () {
+                controller.deleteSaveName();
+              },
+              child: const Text("delete Name"),
             ),
           ),
         ],

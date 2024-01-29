@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
               ),
               color: Colors.red,
               onPressed: () {
-                Get.to(()=>  SecondScreen());
+                Get.to(()=>  FirstScreen());
               },
               child: const Text("First Screen"),
             ),
